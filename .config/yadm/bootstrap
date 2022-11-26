@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Utility functions
+
+file_exists() {
+    test -f "$1"
+}
+
+directory_exists() {
+    test -d "$1"
+}
+
+neovim_package_manager() {
+    local PACKER_DIRECTORY="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/packer/start/packer.nvim"
+
+    if ! directory_exists "$PACKER_DIRECTORY"; then
+        echo 'Installing a package manager for Neovim...'
+        git clone "https://github.com/wbthomason/packer.nvim" "$PACKER_DIRECTORY"
+        echo 'Done.'
+    fi
+}
+
+neovim_packages() {
+    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+}
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+        
+        # install homebrew if it's missing
+        if ! command -v brew >/dev/null 2>&1; then
+                echo "Installing homebrew"
+                /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        fi
+
+        if [ -f "$HOME/.Brewfile" ]; then
+                echo "Updating homebrew bundle"
+                brew bundle --global
+        fi
+
+        neovim_package_manager
+        neovim_packages
+fi
