@@ -20,6 +20,8 @@ end
 
 alias edit_fish_config "nvim ~/.config/fish/config.fish"
 alias fzf "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+alias icat "kitty +kitten icat"
+alias kssh "kitty +kitten ssh"
 
 function cdd -d "Create a directory and set CWD"
         command mkdir $argv
@@ -34,8 +36,8 @@ function cdd -d "Create a directory and set CWD"
         end
 end
 
+
 function fish_greeting
-        # imgcat -H 15 $HOME/.config/fish/Dione.png
         echo "Hello Hannes 👋"
 end
 

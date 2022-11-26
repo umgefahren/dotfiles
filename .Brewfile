@@ -31,6 +31,8 @@ brew "postgresql@14"
 brew "tinygo"
 brew "tree"
 brew "tree-sitter"
+brew "imagemagick"
+brew "fastfetch"
 
 
 cask "kitty"
