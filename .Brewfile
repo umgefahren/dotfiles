@@ -33,6 +33,7 @@ brew "tree"
 brew "tree-sitter"
 brew "imagemagick"
 brew "fastfetch"
+brew "jq"
 
 
 cask "kitty"
