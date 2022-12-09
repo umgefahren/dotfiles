@@ -49,6 +49,7 @@ cask "font-jetbrains-mono"
 cask "clion"
 cask "goland"
 cask "intellij-idea"
+cask "signal"
 
 mas "ICE Buddy", id: 1595947689
 mas "Bitwarden", id: 1352778147
