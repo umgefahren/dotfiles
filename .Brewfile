@@ -34,6 +34,8 @@ brew "tree-sitter"
 brew "imagemagick"
 brew "fastfetch"
 brew "jq"
+brew "git-delta"
+brew "less"
 
 
 cask "kitty"

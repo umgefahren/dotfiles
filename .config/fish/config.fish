@@ -15,7 +15,9 @@ if status --is-login
         set -gx LANG "en_US.UTF-8"
         set -gx LC_CTYPE "en_US.UTF-8"
         set -gx GO111MODULE on
+        set -gx BAT_THEME Dracula
         set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix"
+        set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 end
 
 alias edit_fish_config "nvim ~/.config/fish/config.fish"
