@@ -24,6 +24,9 @@ alias edit_fish_config "nvim ~/.config/fish/config.fish"
 alias fzf "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 alias icat "kitty +kitten icat"
 alias kssh "kitty +kitten ssh"
+alias kclip "kitty +kitten clipboard"
+alias ll "exa -l"
+alias ls "exa"
 
 function cdd -d "Create a directory and set CWD"
         command mkdir $argv
