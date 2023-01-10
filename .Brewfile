@@ -36,6 +36,7 @@ brew "fastfetch"
 brew "jq"
 brew "git-delta"
 brew "less"
+brew "helix"
 
 
 cask "kitty"

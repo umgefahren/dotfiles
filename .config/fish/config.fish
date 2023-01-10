@@ -11,6 +11,7 @@ if status --is-login
         fish_add_path $GOROOT/bin
         fish_add_path (go env GOPATH)/bin
         fish_add_path ~/.cargo/bin/
+        fish_add_path ~/.rustup/toolchains/nightly-x86_64-apple-darwin/bin/
         set -gx GPG_TTY (tty)
         set -gx LANG "en_US.UTF-8"
         set -gx LC_CTYPE "en_US.UTF-8"
@@ -25,6 +26,8 @@ alias fzf "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {
 alias icat "kitty +kitten icat"
 alias kssh "kitty +kitten ssh"
 alias kclip "kitty +kitten clipboard"
+alias clipc "fish_clipboard_copy"
+alias clipp "fish_clipboard_paste"
 alias ll "exa -l"
 alias ls "exa"
 

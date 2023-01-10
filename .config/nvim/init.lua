@@ -185,4 +185,4 @@ keyset('n', '<leader>fg', builtin.live_grep, {})
 keyset('n', '<leader>gb', builtin.git_branches, {})
 keyset('n', '<leader>gs', builtin.git_status, {})
 
-require("config_notify")
+-- require("config_notify")
