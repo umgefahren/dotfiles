@@ -1,5 +1,6 @@
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+tap "d12frosted/emacs-plus"
 
 
 brew "node@18"
@@ -37,6 +38,7 @@ brew "jq"
 brew "git-delta"
 brew "less"
 brew "helix"
+brew "emacs-plus@28", args: ["with-native-comp", "with-xwidgets", "with-imagemagick", "with-mailutils", "with-elrumo2-icon"], restart_service: :changed
 
 
 cask "kitty"
