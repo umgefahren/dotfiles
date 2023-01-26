@@ -65,3 +65,4 @@ mas "Pages", id: 409201541
 mas "Affinity Photo", id: 824183456
 mas "Affinity Designer", id: 824171161
 mas "WhatsApp Desktop", id: 1147396723
+mas "Keynote", id: 409183694
