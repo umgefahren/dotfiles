@@ -31,7 +31,7 @@ M.mason = {
     "clang-format",
 
     -- Rust
-    "rust-analyzer",
+    -- "rust-analyzer",
 
     -- Docker
     "dockerfile-language-server",

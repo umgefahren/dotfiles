@@ -8,6 +8,7 @@
 	autocrlf = input
         editor = nvim
         pager = delta
+	excludesFile = /Users/hannes/.gitignore
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/local/bin/gh auth git-credential

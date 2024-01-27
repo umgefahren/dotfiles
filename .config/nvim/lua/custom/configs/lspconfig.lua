@@ -9,13 +9,20 @@ local servers = {
   "cssls",
   "tsserver",
   "clangd",
-  "rust_analyzer",
+-- "rust_analyzer",
   "dockerls",
   "docker_compose_language_service",
   "gopls",
   "hls",
   "svelte",
   "pyright",
+  "julials",
+  "crystalline",
+  "cmake",
+  "fsautocomplete",
+  "svelte",
+  "ruby_ls",
+  -- "sorbet",
 }
 
 for _, lsp in ipairs(servers) do

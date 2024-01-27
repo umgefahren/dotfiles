@@ -1,3 +1,14 @@
+if test (arch) = "arm64"
+  eval (/opt/homebrew/bin/brew shellenv)
+else
+  eval (/usr/local/bin/brew shellenv)
+end
+
+function fish_greeting
+    echo "Arch: $(machine)"
+    echo "Hello Hannes 👋"
+end
+
 function not_installed
     if test (count $argv) -lt 2
         echo "function `not_installed` wasn't given enough arguments"
@@ -23,6 +34,8 @@ end
 
 fish_add_path ~/.cargo/bin/
 
+fish_add_path ~/v
+
 
 if status is-interactive
     fish_vi_key_bindings
@@ -43,7 +56,7 @@ if status is-interactive
     end
 end
 
-fish_add_path /opt/homebrew/bin
+
 fish_add_path $HOMEBREW_PREFIX/opt/make/libexec/gnubin
 
 if type -q go
@@ -67,8 +80,8 @@ if status --is-login
         fish_add_path /Users/hannes/.dotnet/tools
     end
     if type -q cargo
-        fish_add_path ~/.rustup/toolchains/nightly-aarch64-apple-darwin/bin/
-        fish_add_path ~/.cargo/bin/
+        # fish_add_path ~/.rustup/toolchains/nightly-aarch64-apple-darwin/bin/
+        # fish_add_path ~/.cargo/bin/
     else
         echo "INSTALL RUST!!!"
     end
@@ -116,11 +129,19 @@ end
 alias clipc fish_clipboard_copy
 alias clipp fish_clipboard_paste
 
-if type -q exa
-    alias ll "exa -l"
-    alias ls exa
+if type -q /usr/local/bin/fish
+  alias x86fish "arch -x86_64 /usr/local/bin/fish"
+end
+
+if type -q /opt/homebrew/bin/fish
+  alias arm64fish "arch -arm64e /opt/homebrew/bin/fish"
+end
+
+if type -q eza
+    alias ll "eza -l"
+    alias ls eza
 else
-    not_installed exa exa
+    not_installed eza eza
 end
 
 function cdd -d "Create a directory and set CWD"
@@ -137,9 +158,6 @@ function cdd -d "Create a directory and set CWD"
 end
 
 
-function fish_greeting
-    echo "Hello Hannes 👋"
-end
 
 function resource
     source $HOME/.config/fish/config.fish
@@ -156,13 +174,48 @@ if type -q ipfs
   ipfs commands completion fish | source
 end
 
+if type -q espflash
+  espflash completions fish | source
+end
+
+if type -q espup
+  espup completions fish -l error | source
+end
+
 
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin $PATH /Users/hannes/.ghcup/bin # ghcup-env
 
 fish_add_path ~/development/flutter/bin
 
-# set -gx PNPM_HOME "/Users/hannes/Library/pnpm"
-# if not string match -q -- $PNPM_HOME $PATH
-#   set -gx PATH "$PNPM_HOME" $PATH
-# end
+if type -q thefuck
+  thefuck --alias | source
+end
+
+if type -q /Users/hannes/export-esp.sh; and type -q bass
+  bass source /Users/hannes/export-esp.sh
+end
+
+
+function update-everything
+  set_color -o magenta; echo "UPDATING HOMEBREW"; set_color normal
+  brew update
+  set_color -o magenta; echo "UPGRADING HOMEBREW"; set_color normal
+  brew upgrade
+  set_color -o red; echo "UPDATING RUST"; set_color normal
+  rustup update
+end
+
+alias aocr "aoc r | less"
+
+status --is-interactive; and rbenv init - fish | source
+
+# pnpm
+set -gx PNPM_HOME "/Users/hannes/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+# opam configuration
+source /Users/hannes/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
